@@ -12,14 +12,31 @@ function _drawSnacks() {
   document.getElementById('snacks').innerHTML = template
 }
 
+function _drawTotal() {
+  let total = 0
+  let cartTotal = document.getElementById('cart-total')
+  let snacks = appState.snacks
+  snacks.forEach(snack => {
+    total += snack.price*snack.quantity
+  })
+  // @ts-ignore
+  cartTotal.innerText = total
+}
 
+function _drawCart() {
+  let cartSnacks = appState.snacks;
+  let template = '';
+  cartSnacks.forEach((p) => {
+    
+      template += p.cartTemplate
+    
+  });
+  // cartSnacks.forEach(s => template += s.cartTemplate)
+  document.getElementById('cart').innerHTML = template;
+}
 export class SnackController {
-  // place calls you want to run on load in the controller constructor
+  // NOTE place calls you want to run on load in the controller constructor
   constructor() {
-    // NOTE for demonstration purposed
-    // new Player('Mick', 0)
-    // new Player('Jeffe', -10)
-    // this.drawPlayers()
     _drawSnacks()
   }
 
@@ -28,22 +45,9 @@ export class SnackController {
     console.log( 'Buying Snack:', name,);
     snackService.buySnack(name)
     _drawSnacks()
-    // this.drawPlayers()
+    _drawCart()
+    _drawTotal()
   }
 
-  drawSnacks() {
-    let snacks = appState.snacks
-    let template = ''
-    snacks.forEach(p => {
-      template += `
-      <div class="col-md-6 text-center p-2 bg-light elevation-2">
-        <h3>${p.name}</h3>
-        <h3 class="text-warning">Price: ${p.price}</h3>
-        <h3 class="text-warning">Quantity: ${p.quantity}</h3>
-        <button class="btn btn-primary w-100" onclick="app.snackController.buySnack('${p.name}')">+</button>
-      </div>
-      `
-    })
-    document.getElementById('snacks').innerHTML = template
-  }
+
 }

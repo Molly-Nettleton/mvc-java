@@ -1,14 +1,18 @@
 import { appState } from "../AppState.js";
 
 
+
+
 class SnackService {
 
-  buySnack(name) {
+ buySnack(name) {
     console.log('Buy Snack', name);
-    let snack = appState.snacks.find(s => s.name == name)
+    let snack = appState.snacks.find(snack => snack.name == name)
     console.log(snack);
-    snack.buySnack()
+   snack.buySnack()
+   
   }
+
 
 }
 

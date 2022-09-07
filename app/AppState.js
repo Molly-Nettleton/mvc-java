@@ -11,7 +11,7 @@ class AppState extends EventEmitter {
 
   // NOTE this type line just adds funtionality to vs code, telling it only Players can exist in that array
   /** @type {import('./Models/Snack').Snack[]} */
-  snacks = [new Snack('Snack1', .25, 0), new Snack('Snack2', .25, 0), new Snack('Snack3', .25, 0)]
+  snacks = [new Snack('Snack1', .25, 0), new Snack('Snack2', .25, 0), new Snack('Snack3', .25, 0), new Snack('Snack4', .25,0)]
 
 
 
